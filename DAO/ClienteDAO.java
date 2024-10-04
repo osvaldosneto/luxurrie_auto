@@ -77,4 +77,9 @@ public class ClienteDAO {
         }
         return listaCliente;
     }
+
+//    Cliente findById(int id){
+//        //seleciona um usuário pelo id
+//        //retur usuario;
+//    }
 }

@@ -1,10 +1,13 @@
 import DAO.ClienteDAO;
 import DAO.EstoqueDAO;
+import DAO.FuncionarioDAO;
 import entidade.Cliente;
 import entidade.Estoque;
+import entidade.Funcionario;
 import entidade.Pessoa;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 
@@ -12,20 +15,44 @@ public class Principal {
 
     public static void main(String[] args){
 
-        EstoqueDAO estoqueDAO = new EstoqueDAO();
+        LocalDate dataAtual = LocalDate.now();
 
-        List<Estoque> listaEstoque = estoqueDAO.findAll();
+        Funcionario funcionario = new Funcionario();
+        funcionario.setStatus(1);
+        funcionario.setSetor("vendas");
+        funcionario.setCargo("vendedor");
+        funcionario.setSalario(1500.00);
+        funcionario.setCpf("76676754321");
+        funcionario.setDataNascimento(java.sql.Date.valueOf(dataAtual));
+        funcionario.setEmail("pedro@delara.com");
+        funcionario.setNome("Pedro de Lara");
+        funcionario.setPhone("9878979797987");
 
-        for(Estoque estoque : listaEstoque){
-            System.out.println(estoque.getMarca() + " - " + estoque.getModelo());
-        }
 
-        ClienteDAO clienteDAO = new ClienteDAO();
+        Funcionario f2 = new Funcionario(2500.00, "Joana Darck",
+                java.sql.Date.valueOf(dataAtual), "email@email.com", "987987987987",
+                "financeiro", "98797979809", "vendas", 1);
 
-        List<Cliente> litaCliente = clienteDAO.findAll();
-        for(Cliente cliente : litaCliente){
-            System.out.println(cliente.toString());
-        }
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        Funcionario funcionarioLocalizado = funcionarioDAO.findById(9);
+        System.out.println(funcionarioLocalizado.toString());
+
+//        funcionarioDAO.createFuncionario(f2);
+
+//        EstoqueDAO estoqueDAO = new EstoqueDAO();
+//
+//        List<Estoque> listaEstoque = estoqueDAO.findAll();
+//
+//        for(Estoque estoque : listaEstoque){
+//            System.out.println(estoque.getMarca() + " - " + estoque.getModelo());
+//        }
+//
+//        ClienteDAO clienteDAO = new ClienteDAO();
+//
+//        List<Cliente> litaCliente = clienteDAO.findAll();
+//        for(Cliente cliente : litaCliente){
+//            System.out.println(cliente.toString());
+//        }
 
 
 //        ClienteDAO clienteDAO = new ClienteDAO();
